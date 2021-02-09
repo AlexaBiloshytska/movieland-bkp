@@ -33,6 +33,7 @@ public class JdbcMovieDao  implements MovieDao {
 
     }
 
+
     @Override
     public List<Movie> getRandom(int randomCount) {
         long startTime = System.currentTimeMillis();

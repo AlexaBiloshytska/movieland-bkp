@@ -15,7 +15,6 @@ public class JdbcGenreDao implements GenreDao {
     private static final String GET_ALL = "select * from genres";
     private GenreMapper genreMapper;
     private JdbcTemplate jdbcTemplate;
-    private long startTime = System.currentTimeMillis();
 
     @Autowired
     public JdbcGenreDao(GenreMapper genreMapper, JdbcTemplate jdbcTemplate) {
@@ -23,8 +22,10 @@ public class JdbcGenreDao implements GenreDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
     @Override
     public List<Genre> getAll() {
+        long startTime = System.currentTimeMillis();
         List<Genre> query = jdbcTemplate.query(GET_ALL, genreMapper);
         log.info("Getting all movies in {} ms: ",System.currentTimeMillis()-startTime);
         return query;
