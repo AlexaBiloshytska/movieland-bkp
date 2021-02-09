@@ -1,7 +1,7 @@
 package com.alexa.movieland.dao.jdbc;
 
-import com.alexa.movieland.dao.MovieDao;
-import com.alexa.movieland.entity.Movie;
+import com.alexa.movieland.dao.GenreDao;
+import com.alexa.movieland.entity.Genre;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,21 +15,14 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/test/resources/test-application-context.xml")
-public class JdbcMovieDaoTest {
+public class JdbcGenreDaoTest {
 
     @Autowired
-    private MovieDao movieDao;
+    private GenreDao genreDao;
 
     @Test
     public void getAll() {
-        List<Movie> movies = movieDao.getAll();
-        Assert.assertEquals(4, movies.size());
+        List<Genre> genres = genreDao.getAll();
+        Assert.assertEquals(2,genres.size());
     }
-
-    @Test
-    public void getRandom() {
-        List<Movie> randomMovies= movieDao.getRandom(3);
-        Assert.assertEquals(3,randomMovies.size());
-    }
-
 }

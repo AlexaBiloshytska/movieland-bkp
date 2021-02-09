@@ -31,5 +31,8 @@ insert into movies ( name_native, name_russian, year_of_release,description,rati
 insert into movies ( name_native, name_russian, year_of_release,description,rating,price,poster_url) VALUES ('Shadow fight 3','Бой с тенью 3',2011,'The third part',10.0,500.0,'https://www.google.com');
 insert into movies ( name_native, name_russian, year_of_release,description,rating,price,poster_url) VALUES ('Focus','Фокус',2011,'With Will Smith',10.0,1000.0,'https://www.google.com');
 
+insert into genres(name) VALUES ('боевик');
+insert into genres(name) VALUES ('мелодрама');
+
 
 
