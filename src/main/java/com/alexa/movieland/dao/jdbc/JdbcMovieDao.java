@@ -14,6 +14,7 @@ import java.util.List;
 public class JdbcMovieDao  implements MovieDao {
     private static final String GET_ALL_MOVIES = "select * from movies";
     private static final String RANDOM = "select * from movies  order by random() limit ?";
+    private static final String GET_MOVIES_BY_GENRE = "select * from movies m join genres g on g.id=m.id where g.id=?";
     private static final MovieMapper MOVIE_MAPPER = new MovieMapper();
     private JdbcTemplate jdbcTemplate;
 
@@ -41,5 +42,12 @@ public class JdbcMovieDao  implements MovieDao {
         List<Movie> randomQuery = jdbcTemplate.query(RANDOM, MOVIE_MAPPER, randomCount);
         log.info("Getting 3 random movies in {} ms: ", System.currentTimeMillis()-startTime);
         return randomQuery;
+    }
+
+    @Override
+    public List<Movie> getMoviesByGenre(int genreId) {
+        long startTime = System.currentTimeMillis();
+        log.info("Getting movies by genre {} ms: ", System.currentTimeMillis()- startTime);
+        return jdbcTemplate.query(GET_MOVIES_BY_GENRE, MOVIE_MAPPER, genreId);
     }
 }

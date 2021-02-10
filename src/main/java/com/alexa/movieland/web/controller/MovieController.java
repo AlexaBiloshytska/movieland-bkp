@@ -7,6 +7,7 @@ import com.alexa.movieland.web.mapper.MovieMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -31,5 +32,10 @@ public class MovieController {
     @GetMapping(value = "/random")
     public List<Movie> getRandom (){
         return movieService.getRandom();
+    }
+
+    @GetMapping(value = "/genre")
+    public List<Movie> getMoviesByGenre(@RequestParam int genreId){
+        return movieService.getMoviesByGenre(genreId);
     }
 }
