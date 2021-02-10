@@ -1,24 +1,24 @@
 <configuration>
     <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <Pattern>%d %-5level [%thread] %logger{0}: %msg%n</Pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="fileAppender" class="ch.qos.logback.core.FileAppender">
-        <file>movieland.log</file>
+        <file>logs/movieland.log</file>
         <append>true</append>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>logs/movieland.%d{yyyy-MM-dd}.log.%i</fileNamePattern>
             <maxFileSize>5MB</maxFileSize>
         </triggeringPolicy>
 
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+        <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="consoleAppender"/>
         <appender-ref ref="fileAppender"/>
     </root>
